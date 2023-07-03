@@ -10,10 +10,10 @@
 import EventOrganize from '@/components/EventOrganize.vue'
 import type { EventItem } from '@/type'
 import { ref } from 'vue'
-import  EventService  from '@/services/EventService'
-import type {Ref} from 'vue'
+import EventService from '@/services/EventService'
+import type { Ref } from 'vue'
 const events: Ref<Array<EventItem>> = ref([])
-EventService.getEvent().then((respond) =>{
+EventService.getEvent().then((respond) => {
   events.value = respond.data
 })
 </script>
