@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <EventOrganize v-for="event in events" :key="event.id" :event="event"></EventOrganize>
-  </div>
+  <main class="event">
+    <div>
+      <EventOrganize v-for="event in events" :key="event.id" :event="event"></EventOrganize>
+    </div>
+  </main>
 </template>
 
 <script lang="ts" setup>
@@ -46,5 +48,9 @@ const events = ref<EventItem[]>([
 </script>
 
 <style>
-
+.event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 </style>
