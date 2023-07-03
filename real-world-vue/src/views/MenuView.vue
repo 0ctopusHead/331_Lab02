@@ -1,15 +1,12 @@
 <template>
-  <main class="events">
-    <EventCard v-for="event in events" :key="event.id" :event="event"></EventCard>
+  <div>
     <EventOrganize v-for="event in events" :key="event.id" :event="event"></EventOrganize>
-  </main>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import EventCard from '../components/EventCard.vue'
-import EventOrganize from '../components/EventOrganize.vue'
+import EventOrganize from '@/components/EventOrganize.vue'
 import type { EventItem } from '@/type'
-
 import { ref } from 'vue'
 const events = ref<EventItem[]>([
   {
@@ -48,10 +45,6 @@ const events = ref<EventItem[]>([
 ])
 </script>
 
-<style scoped>
-.events {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+<style>
+
 </style>
