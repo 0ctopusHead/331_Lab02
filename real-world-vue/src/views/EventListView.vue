@@ -3,10 +3,12 @@
   <main class="events">
     <EventCard v-for="event in events" :key="event.id" :event="event"></EventCard>
     <!-- <EventOrganize v-for="event in events" :key="event.id" :event="event"></EventOrganize> -->
+    <!-- <EventDetailView></EventDetailView> -->
   </main>
 </template>
 
 <script lang="ts" setup>
+// import EventDetailView from './EventDetailView.vue'
 import EventCard from '../components/EventCard.vue'
 // import EventOrganize from '../components/EventOrganize.vue'
 import type { EventItem } from '@/type'
