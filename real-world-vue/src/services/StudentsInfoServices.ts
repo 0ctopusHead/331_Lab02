@@ -12,7 +12,7 @@ const apiClient : AxiosInstance = axios.create({
 })
 
 export default{
-    getEvent(): Promise<AxiosResponse<studentInfo[]>>{
+    getStudent(): Promise<AxiosResponse<studentInfo[]>>{
         return apiClient.get<studentInfo[]>('/students')
     }
 }

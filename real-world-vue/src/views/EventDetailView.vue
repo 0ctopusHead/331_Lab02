@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+ <script lang="ts" setup>
 import EventService from '@/services/EventService'
 import { ref } from 'vue'
 import type { Ref } from 'vue'

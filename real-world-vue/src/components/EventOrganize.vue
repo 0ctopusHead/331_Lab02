@@ -2,11 +2,11 @@
   <div class="organize-class">
    <div class="organize-card">
     <span>
-       Category : {{ event?.category }}
+       Category : {{ event.category }}
     </span> 
      <br/>
     <span>
-       Organizer : {{ event?.organizer }}
+       Organizer : {{ event.organizer }}
     </span>
   
    
@@ -21,7 +21,7 @@
 const props = defineProps({
   event: {
     type: Object as PropType<EventItem>,
-    require: true
+    required: true
   }
 })
 </script>

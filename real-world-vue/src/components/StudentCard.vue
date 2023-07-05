@@ -1,8 +1,8 @@
 <template>
   <div class="student-class">
     <div class="student-card">
-      <span>Name: {{ student?.name }}</span>
-      <span>Surname: {{ student?.surname }}</span>
+      <span>Name: {{ student.name }}</span>
+      <span>Surname: {{ student.surname }}</span>
       <p>GPA: {{ student?.gpa }}</p>
     </div>
   </div>
@@ -14,7 +14,7 @@ import type { PropType } from 'vue'
 const props = defineProps({
   student: {
     type: Object as PropType<studentInfo>,
-    require: true
+    required: true
   }
 })
 </script>

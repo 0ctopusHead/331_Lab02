@@ -9,7 +9,7 @@ import type { studentInfo } from '@/info'
 import { ref, type Ref } from 'vue'
 import StudentsInfoServices from '@/services/StudentsInfoServices'
 const students: Ref<Array<studentInfo>> = ref([])
-StudentsInfoServices.getEvent().then((respond) => {
+StudentsInfoServices.getStudent().then((respond) => {
   students.value = respond.data
 })
 </script>

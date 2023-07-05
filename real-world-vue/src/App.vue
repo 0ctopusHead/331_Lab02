@@ -1,14 +1,16 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
   <header>
     <nav>
-      <RouterLink :to="{name: 'EventList' }">Home</RouterLink> |
+      <RouterLink :to="{name: 'event-list' }">Home</RouterLink> | 
       <RouterLink :to="{name: 'about'}">About</RouterLink> |
       <RouterLink :to="{name: 'menu'}">Menu</RouterLink> |
-      <RouterLink :to="{name: 'students'}">Student</RouterLink>
+      <RouterLink :to="{name: 'student-info'}">Student</RouterLink> |
+      <RouterLink :to="{name: 'event-list'}"> Size Change</RouterLink>
     </nav>
   </header>
   <RouterView/>

@@ -1,3 +1,4 @@
+
 <template>
   <main class="event">
     <div>
@@ -7,15 +8,18 @@
 </template>
 
 <script lang="ts" setup>
+
 import EventOrganize from '@/components/EventOrganize.vue'
 import type { EventItem } from '@/type'
 import { ref } from 'vue'
 import EventService from '@/services/EventService'
 import type { Ref } from 'vue'
+
 const events: Ref<Array<EventItem>> = ref([])
-EventService.getEvent().then((respond) => {
-  events.value = respond.data
-})
+  EventService.getMenu().then((respond) =>{
+    events.value = respond.data
+  })
+  
 </script>
 
 <style>
