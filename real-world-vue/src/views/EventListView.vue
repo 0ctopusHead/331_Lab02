@@ -61,7 +61,7 @@ const hasNextPage = computed(() =>{
 }
 .pagination {
   display: flex;
-  width: 290 px;
+  width: 290px;
 }
 .pagination a {
   float: 1;
@@ -70,7 +70,7 @@ const hasNextPage = computed(() =>{
 }
 
 #page-prev {
-  text-align: left;
+  text-align: left; 
 }
 
 #page-next {
