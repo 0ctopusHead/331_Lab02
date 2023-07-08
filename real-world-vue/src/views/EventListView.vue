@@ -6,11 +6,10 @@ import { onBeforeRouteUpdate } from 'vue-router'
 import type { Ref } from 'vue'
 import EventService from '@/services/EventService'
 import type { AxiosResponse } from 'axios'
-import NProgress from 'nprogress'
 import { useRouter } from 'vue-router'
 const events: Ref<Array<EventItem>> = ref([])
 const totalEvent = ref<number>(0)
-const perPage = ref<number>(2)
+// const perPage = ref<number>(2)
 const router = useRouter()
 const props = defineProps({
   page: {
@@ -18,7 +17,7 @@ const props = defineProps({
     required: true
   }
 })
-  EventService.getEvent(perPage.value, props.page).then((response: AxiosResponse<EventItem[]>) => {
+  EventService.getEvent(3, props.page).then((response: AxiosResponse<EventItem[]>) => {
     events.value = response.data
     totalEvent.value = response.headers['x-total-count']
   }).catch(() =>{
@@ -26,7 +25,7 @@ const props = defineProps({
   })
 onBeforeRouteUpdate((to, from, next) =>{
   const toPage = Number(to.query.page)
-  EventService.getEvent(perPage.value,toPage).then((response: AxiosResponse<EventItem[]>) => {
+  EventService.getEvent(3, toPage).then((response: AxiosResponse<EventItem[]>) => {
     events.value = response.data
     totalEvent.value = response.headers['x-total-count']
     next()
@@ -37,7 +36,7 @@ onBeforeRouteUpdate((to, from, next) =>{
 
 const hasNextPage = computed(() =>{
   //first calculate the total page
-  const totalPages = Math.ceil(totalEvent.value / perPage.value)
+  const totalPages = Math.ceil(totalEvent.value / 3)
   return props.page.valueOf() < totalPages
 })
 </script>
@@ -45,14 +44,14 @@ const hasNextPage = computed(() =>{
 <template>
   <h1>Events For Good</h1>
   <main class="events">
-    <div class="per-page-select">
+    <!-- <div class="per-page-select">
      <label for="per-page">Event/Pages</label>
      <select id="perpage" v-model="perPage">
       <option value="2">2</option>
       <option value="4">4</option>
       <option value="6">6</option>
      </select>
-    </div>
+    </div> -->
     <EventCard v-for="event in events" :key="event.id" :event="event"></EventCard>
     <div class="pagination">
       <RouterLink :to="{ name: 'event-list', query: { page: page - 1 } }" rel="prev" v-if="page != 1" id="page-prev"
