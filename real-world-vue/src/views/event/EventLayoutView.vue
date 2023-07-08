@@ -1,28 +1,10 @@
 <script setup lang="ts">
+import { useEventStore } from '@/stores/event'
+import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
-import { type EventItem } from '@/type';
-import { useRouter } from 'vue-router';
-import EventService from '@/services/EventService';
-const event = ref<EventItem | null>(null)
-
-const props = defineProps({
-    id: String
-})
-const router = useRouter()
-
-EventService.getEventById(Number(props.id))
-   .then((respond) => {
-    event.value = respond.data
-   })
-   .catch((error) =>{
-    console.log(error)
-    if(error.respond && error.respond.status === 404){
-        router.push({ name: '404:resource', params: {resource : 'event'}})
-    }
-    else{
-        router.push({name: 'network-error'})
-    }
-   })
+const store = useEventStore()
+const event = storeToRefs(store).event
+const id = ref(event?.value?.id)
 </script>
 <template>
     <div v-if="event">
