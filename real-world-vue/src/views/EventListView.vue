@@ -1,27 +1,40 @@
 <script setup lang="ts">
 import EventCard from '../components/EventCard.vue'
 import type { EventItem } from '@/type'
-import { watchEffect, ref, computed  } from 'vue'
+import { ref, computed} from 'vue'
+import { onBeforeRouteUpdate } from 'vue-router'
 import type { Ref } from 'vue'
 import EventService from '@/services/EventService'
 import type { AxiosResponse } from 'axios'
-
+import NProgress from 'nprogress'
+import { useRouter } from 'vue-router'
 const events: Ref<Array<EventItem>> = ref([])
 const totalEvent = ref<number>(0)
 const perPage = ref<number>(2)
+const router = useRouter()
 const props = defineProps({
   page: {
     type: Number,
     required: true
   }
 })
-watchEffect(() => {
-  console.log('watchEffect triggered')
   EventService.getEvent(perPage.value, props.page).then((response: AxiosResponse<EventItem[]>) => {
     events.value = response.data
     totalEvent.value = response.headers['x-total-count']
+  }).catch(() =>{
+    router.push({name: 'network-error'})
   })
-})
+onBeforeRouteUpdate((to, from, next) =>{
+  const toPage = Number(to.query.page)
+  EventService.getEvent(perPage.value,toPage).then((response: AxiosResponse<EventItem[]>) => {
+    events.value = response.data
+    totalEvent.value = response.headers['x-total-count']
+    next()
+  }).catch(() =>{
+    next({name: 'network-error'})
+  })
+})  
+
 const hasNextPage = computed(() =>{
   //first calculate the total page
   const totalPages = Math.ceil(totalEvent.value / perPage.value)
