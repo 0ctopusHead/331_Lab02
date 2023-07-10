@@ -26,5 +26,5 @@ function edit(){
 </script>
 <template>
   <p>Edit the event here</p>
-  <button @click="edit">Edit</button>
+  <button class="bg-lime-500 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded-full" @click="edit">Edit</button>
 </template>

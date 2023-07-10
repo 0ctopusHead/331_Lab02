@@ -1,6 +1,6 @@
 
 <template>
-  <main class="event">
+  <main class="flex flex-col items-center">
     <div>
       <EventOrganize v-for="event in events" :key="event.id" :event="event"></EventOrganize>
     </div>

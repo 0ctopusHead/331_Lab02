@@ -26,5 +26,5 @@ function register(){
 </script>
 <template>
   <p>Register from here</p>
-  <button @click="register">Register Me</button>
+  <button class="bg-lime-500 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded-full" @click="register">Register Me</button>
 </template>

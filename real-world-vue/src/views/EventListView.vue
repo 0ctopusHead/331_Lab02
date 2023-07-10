@@ -43,7 +43,7 @@ const hasNextPage = computed(() =>{
 
 <template>
   <h1>Events For Good</h1>
-  <main class="events">
+  <main class="flex flex-col items-center">
     <!-- <div class="per-page-select">
      <label for="per-page">Event/Pages</label>
      <select id="perpage" v-model="perPage">
@@ -66,11 +66,7 @@ const hasNextPage = computed(() =>{
 </template>
 
 <style scoped>
-.events {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 .pagination {
   display: flex;
   width: 290px;
