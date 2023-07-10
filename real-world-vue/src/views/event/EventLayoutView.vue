@@ -9,12 +9,12 @@ const id = ref(event?.value?.id)
 <template>
     <div class="flex flex-col items-center" v-if="event">
         <h1>{{ event.title }} </h1>
-        <div class="underline text-lime-500" id="nav">
-            <router-link :to="{name: 'event-detail', params: {id}}">Details</router-link>
+        <div id="nav">
+            <router-link class="underline text-lime-500 hover:text-lime-800 focus:text-green-900" :to="{name: 'event-detail', params: {id}}">Details</router-link>
             |
-            <router-link :to="{name: 'event-register', params: {id}}">Register</router-link>
+            <router-link class="underline text-lime-500 hover:text-lime-800 focus:text-green-900" :to="{name: 'event-register', params: {id}}">Register</router-link>
             |
-            <router-link :to="{name: 'event-edit', params:{id}}">Edit</router-link>
+            <router-link class="underline text-lime-500 hover:text-lime-800 focus:text-green-900" :to="{name: 'event-edit', params:{id}}">Edit</router-link>
         </div>
         <RouterView :event="event"></RouterView>
     </div>
