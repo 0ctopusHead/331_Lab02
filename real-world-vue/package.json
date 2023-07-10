@@ -1,7 +1,6 @@
 {
   "name": "real-world-vue",
   "version": "0.0.0",
-  "type": "module",
   "private": true,
   "scripts": {
     "dev": "concurrently \"json-server --watch db.json --port 3004\" \"vite\"",
